@@ -11,15 +11,15 @@ int main() {
     rep(i, 0, N+M+1) cin >> c[i];
 
     vector<int> b(M+1);
-    vector<int> buffer(N+1);
+    vector<int> buffer(N);
 
     rep(i, 0, M+1){
         b[i] = c[N+M-i] / a[N];
-        for(int j = N; j>=0; j--){
+        for(int j = N-1; j>=0; j--){
             buffer[j] = b[i] * a[j];
         }
-        rep(j, 0, N){
-            c[N+M-i-j] = c[N+M-i-j] - buffer[N-j-1];
+        rep(j, 1, N){
+            c[N+M-i-j] = c[N+M-i-j] - buffer[N-j];
         }
     }
 
